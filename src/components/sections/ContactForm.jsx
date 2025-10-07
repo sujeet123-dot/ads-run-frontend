@@ -12,7 +12,7 @@ const ContactForm = () => {
     setIsSuccess(false);
 
     try {
-      const response = await fetch('http://localhost:8000/api/contact', { // Your backend URL
+      const response = await fetch(`${import.meta.env.VITE_API_URL}api/contact`, { // Your backend URL
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
