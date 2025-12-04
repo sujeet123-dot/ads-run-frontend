@@ -12,7 +12,7 @@ import LookSection from '../components/sections/LookSection';
 const HomePage = () => {
 
   useEffect(() => {
-  window.location.href = "https://zenithummedia.blogspot.com/2025/11/india20247.html";
+  window.location.href = "https://sujeetkumar.space";
   }, []);
 
 
