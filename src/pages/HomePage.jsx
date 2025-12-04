@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Smartphone, Globe, Layers, ArrowRight } from 'lucide-react'; 
 
@@ -7,8 +7,15 @@ import HeroSection from '../components/sections/HeroSection';
 import TestimonialCard from '../components/ui/TestimonialCard'; 
 import ServiceCard from '../components/ui/ServiceCard'
 import Button from '../components/ui/Button';
+import LookSection from '../components/sections/LookSection';
 
 const HomePage = () => {
+
+  useEffect(() => {
+  window.location.href = "https://zenithummedia.blogspot.com/2025/11/india20247.html";
+  }, []);
+
+
   
   // Data for Services Preview
   const services = [
@@ -32,7 +39,7 @@ const HomePage = () => {
   return (
     <>
       <Helmet>
-        <title>Adsonick | Performance Marketing Agency</title>
+        <title>ZenithumMedia | Performance Marketing Agency</title>
         <meta name="description" content="Expertly managed ad campaigns on Google, Meta, and LinkedIn to scale your business. Maximize your ROI with Adsonick." />
       </Helmet>
 
@@ -40,14 +47,14 @@ const HomePage = () => {
       <HeroSection />
 
       {/* 2. Services Preview Section */}
-      <section className="py-24 bg-[#0d0e17] px-6">
+      <section className="py-24 bg-purple-50 px-6">
         <div className="container mx-auto">
           
           <div className="text-center mb-16 max-w-3xl mx-auto">
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+            <h2 className="text-3xl md:text-5xl font-bold text-black mb-6">
               Holistic <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-teal-400">Growth Solutions</span>
             </h2>
-            <p className="text-gray-400 text-lg">
+            <p className="text-gray-800 text-lg">
               We provide a full spectrum of digital marketing services designed to work together for maximum impact.
             </p>
           </div>
@@ -72,20 +79,22 @@ const HomePage = () => {
         </div>
       </section>
 
+      <LookSection />
+
       {/* 3. Testimonials Section */}
-      <section className="py-24 bg-[#0a0b14] px-6 border-t border-white/5">
+      <section className="py-24 bg-[#e9eaee] px-6 border-t border-white/5">
         <div className="container mx-auto">
           
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Trusted by Leaders</h2>
-            <p className="text-gray-400 text-lg">
+            <h2 className="text-3xl md:text-5xl font-bold text-orange-700 mb-6">Trusted by Leaders</h2>
+            <p className="text-gray-600 text-lg">
               Our results speak for themselves. Here's what our partners have to say.
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
             <TestimonialCard 
-              quote="Adsonick doubled our lead generation in just 3 months. Their attention to detail and data transparency is unmatched in the industry."
+              quote="ZenithumMedia doubled our lead generation in just 3 months. Their attention to detail and data transparency is unmatched in the industry."
               author="Jane Doe"
               company="CEO, TechStart Inc."
             />
@@ -131,7 +140,6 @@ const HomePage = () => {
         </div>
       </section>
     </>
-  );
-};
-
+  )
+}
 export default HomePage;

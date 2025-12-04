@@ -9,7 +9,7 @@ const ServiceCard = ({ title, description, icon }) => {
         bg-[#141625] border border-white/5 
         p-8 
         transition-all duration-300 ease-out
-        hover:-translate-y-2 hover:shadow-2xl hover:shadow-indigo-500/10 hover:border-indigo-500/30
+        hover:-translate-y-2 hover:shadow-2xl hover:shadow-amber-500/10 hover:border-amber-500/30
       ">
         
         
@@ -28,7 +28,7 @@ const ServiceCard = ({ title, description, icon }) => {
         </div>
 
         {/* 3. Title */}
-        <h2 className="mt-4 text-xl font-bold text-white group-hover:text-indigo-200 transition-colors">
+        <h2 className="mt-4 text-xl font-bold text-white group-hover:text-red-200 transition-colors">
           {title}
         </h2>
 
