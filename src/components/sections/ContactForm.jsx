@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { Send, Loader2, CheckCircle, AlertCircle } from 'lucide-react';
 
 const ContactForm = () => {
   const { register, handleSubmit, formState: { errors }, reset } = useForm();
   const [serverMessage, setServerMessage] = useState('');
   const [isSuccess, setIsSuccess] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-  // --- UPDATED SUBMIT FUNCTION ---
   const onSubmit = async (data) => {
-    setServerMessage(''); // Clear previous messages
+    setServerMessage('');
     setIsSuccess(false);
+    setIsLoading(true); // Start loading
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}api/contact`, { // Your backend URL
+      const response = await fetch(`${import.meta.env.VITE_API_URL}api/contact`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -27,56 +29,128 @@ const ContactForm = () => {
       }
       
       setIsSuccess(true);
-      setServerMessage(result.success);
-      reset(); // Clear the form fields on success
+      setServerMessage(result.success || 'Message sent successfully!');
+      reset(); 
 
     } catch (error) {
       setIsSuccess(false);
       setServerMessage(error.message);
+    } finally {
+      setIsLoading(false); // Stop loading
     }
   };
 
-  const inputClasses = "w-full rounded-lg border-gray-700 bg-gray-800 p-3 text-sm text-white placeholder-gray-500";
-  const errorClasses = "text-red-500 text-xs mt-1";
+  // Modern Input Styles
+  const inputWrapperClass = "relative";
+  const inputClasses = `
+    w-full rounded-xl bg-[#141625] border border-white/10 p-4 text-white placeholder-gray-500 
+    focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 
+    transition-all duration-300
+  `;
+  const errorClasses = "text-rose-400 text-xs mt-1 flex items-center gap-1";
 
   return (
-    <div className="max-w-xl mx-auto">
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4" noValidate>
-        {/* Form fields remain the same */}
-        <div>
-          <label className="sr-only" htmlFor="name">Name</label>
-          <input className={inputClasses} placeholder="Your Name" type="text" id="name"
-            {...register("name", { required: "Name is required." })} />
-          {errors.name && <span className={errorClasses}>{errors.name.message}</span>}
+    <div className="w-full max-w-lg mx-auto bg-white/5 backdrop-blur-sm p-8 rounded-3xl border border-white/5 shadow-2xl">
+      
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6" noValidate>
+        
+        {/* Header inside form (Optional) */}
+        <div className="text-center mb-6">
+          <h3 className="text-xl font-bold text-white">Send us a message</h3>
+          <p className="text-gray-400 text-sm">We usually reply within 24 hours.</p>
         </div>
-        <div>
-          <label className="sr-only" htmlFor="email">Email</label>
-          <input className={inputClasses} placeholder="Email Address" type="email" id="email"
+
+        {/* Name Field */}
+        <div className={inputWrapperClass}>
+          <input 
+            className={`${inputClasses} ${errors.name ? 'border-rose-500/50' : ''}`} 
+            placeholder="Your Name" 
+            type="text" 
+            id="name"
+            disabled={isLoading}
+            {...register("name", { required: "Name is required." })} 
+          />
+          {errors.name && (
+            <span className={errorClasses}>
+              <AlertCircle size={12} /> {errors.name.message}
+            </span>
+          )}
+        </div>
+
+        {/* Email Field */}
+        <div className={inputWrapperClass}>
+          <input 
+            className={`${inputClasses} ${errors.email ? 'border-rose-500/50' : ''}`} 
+            placeholder="Email Address" 
+            type="email" 
+            id="email"
+            disabled={isLoading}
             {...register("email", { 
               required: "Email is required.", 
-              pattern: { value: /^\S+@\S+$/i, message: "A valid email is required." } 
-            })} />
-          {errors.email && <span className={errorClasses}>{errors.email.message}</span>}
-        </div>
-        <div>
-          <label className="sr-only" htmlFor="message">Message</label>
-          <textarea className={inputClasses} placeholder="How can we help?" rows="8" id="message"
-            {...register("message", { required: "A message is required." })}
-          ></textarea>
-          {errors.message && <span className={errorClasses}>{errors.message.message}</span>}
+              pattern: { value: /^\S+@\S+$/i, message: "Please enter a valid email." } 
+            })} 
+          />
+          {errors.email && (
+            <span className={errorClasses}>
+              <AlertCircle size={12} /> {errors.email.message}
+            </span>
+          )}
         </div>
 
-        <div className="mt-4">
-          <button type="submit" className="w-full rounded-lg bg-blue-600 px-5 py-3 font-medium text-white sm:w-auto hover:bg-blue-700 transition-colors">
-            Send Enquiry
-          </button>
+        {/* Message Field */}
+        <div className={inputWrapperClass}>
+          <textarea 
+            className={`${inputClasses} min-h-[150px] resize-none ${errors.message ? 'border-rose-500/50' : ''}`} 
+            placeholder="How can we help you?" 
+            id="message"
+            disabled={isLoading}
+            {...register("message", { required: "Please enter your message." })}
+          ></textarea>
+          {errors.message && (
+            <span className={errorClasses}>
+              <AlertCircle size={12} /> {errors.message.message}
+            </span>
+          )}
         </div>
+
+        {/* Submit Button */}
+        <button 
+          type="submit" 
+          disabled={isLoading}
+          className={`
+            w-full rounded-full py-3.5 font-bold text-white flex items-center justify-center gap-2
+            transition-all duration-300 shadow-lg
+            ${isLoading 
+              ? 'bg-gray-700 cursor-not-allowed opacity-70' 
+              : 'bg-gradient-to-r from-indigo-500 to-purple-600 hover:shadow-indigo-500/25 hover:-translate-y-0.5'
+            }
+          `}
+        >
+          {isLoading ? (
+            <>
+              <Loader2 size={20} className="animate-spin" /> Sending...
+            </>
+          ) : (
+            <>
+              Send Message <Send size={18} />
+            </>
+          )}
+        </button>
       </form>
 
-      {/* Display server success/error messages */}
+      {/* Server Feedback Messages */}
       {serverMessage && (
-        <div className={`mt-4 text-center p-3 rounded-md ${isSuccess ? 'bg-green-800/50 text-green-300' : 'bg-red-800/50 text-red-300'}`}>
-            {serverMessage}
+        <div className={`
+          mt-6 p-4 rounded-xl flex items-start gap-3 text-sm
+          ${isSuccess 
+            ? 'bg-emerald-500/10 border border-emerald-500/20 text-emerald-400' 
+            : 'bg-rose-500/10 border border-rose-500/20 text-rose-400'
+          }
+        `}>
+          <div className="mt-0.5 shrink-0">
+            {isSuccess ? <CheckCircle size={16} /> : <AlertCircle size={16} />}
+          </div>
+          <div>{serverMessage}</div>
         </div>
       )}
     </div>

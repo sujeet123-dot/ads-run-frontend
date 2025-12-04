@@ -1,41 +1,55 @@
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-  const navLinkStyles = ({ isActive }) => ({
-    color: isActive ? '#3b82f6' : '#d1d5db',
-    fontWeight: isActive ? 'bold' : 'normal',
-  });
+  // Detect scroll to add heavier glass effect
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Custom active link styling logic
+  const navLinkClasses = ({ isActive }) =>
+    `text-sm font-medium transition-colors duration-300 hover:text-indigo-400 ${
+      isActive ? 'text-indigo-400' : 'text-gray-300'
+    }`;
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
-    <header className="bg-gray-900/80 backdrop-blur-sm sticky top-0 z-50 border-b border-gray-800">
-      <div className="container mx-auto flex items-center justify-between p-4">
+    <header
+      className={`fixed top-0 w-full z-50 transition-all duration-300 border-b border-white/5 ${
+        scrolled || isOpen ? 'backdrop-blur-md bg-[#0a0b14]/90 py-4' : 'bg-transparent py-6'
+      }`}
+    >
+      <div className="container mx-auto px-6 flex items-center justify-between">
+        
         {/* Logo */}
         <Link
           to="/"
-          className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent"
+          className="text-2xl font-bold tracking-tighter uppercase bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-teal-400"
         >
-          AdRun Pro
+          ZenithumMedia
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-6 text-sm font-medium text-gray-300">
-          <NavLink to="/" style={navLinkStyles} className="hover:text-blue-500 transition-colors">Home</NavLink>
-          <NavLink to="/services" style={navLinkStyles} className="hover:text-blue-500 transition-colors">Services</NavLink>
-          <NavLink to="/case-studies" style={navLinkStyles} className="hover:text-blue-500 transition-colors">Case Studies</NavLink>
-          <NavLink to="/about" style={navLinkStyles} className="hover:text-blue-500 transition-colors">About Us</NavLink>
-          <NavLink to="/contact" style={navLinkStyles} className="hover:text-blue-500 transition-colors">Contact</NavLink>
+        <nav className="hidden md:flex items-center space-x-8">
+          <NavLink to="/" className={navLinkClasses}>Home</NavLink>
+          <NavLink to="/services" className={navLinkClasses}>Services</NavLink>
+          <NavLink to="/case-studies" className={navLinkClasses}>Case Studies</NavLink>
+          <NavLink to="/about" className={navLinkClasses}>About Us</NavLink>
+          <NavLink to="/contact" className={navLinkClasses}>Contact</NavLink>
         </nav>
 
         {/* Desktop Button */}
         <Link
           to="/contact"
-          className="hidden md:inline-block bg-blue-600 text-white px-5 py-2 rounded-md text-sm font-semibold hover:bg-blue-700 transition-colors"
+          className="hidden md:inline-block bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:shadow-lg hover:shadow-indigo-500/30 hover:-translate-y-0.5 transition-all duration-200"
         >
           Get Quote
         </Link>
@@ -43,31 +57,35 @@ const Header = () => {
         {/* Mobile Menu Button */}
         <button
           onClick={toggleMenu}
-          className="md:hidden text-gray-300 hover:text-white transition-colors"
+          className="md:hidden text-white hover:text-indigo-400 transition-colors"
         >
-          {isOpen ? <X size={26} /> : <Menu size={26} />}
+          {isOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
 
       {/* Mobile Dropdown Menu */}
-      {isOpen && (
-        <div className="md:hidden bg-gray-900 border-t border-gray-800">
-          <nav className="flex flex-col items-center space-y-4 py-4 text-gray-300 text-sm font-medium">
-            <NavLink onClick={() => setIsOpen(false)} to="/" style={navLinkStyles}>Home</NavLink>
-            <NavLink onClick={() => setIsOpen(false)} to="/services" style={navLinkStyles}>Services</NavLink>
-            <NavLink onClick={() => setIsOpen(false)} to="/case-studies" style={navLinkStyles}>Case Studies</NavLink>
-            <NavLink onClick={() => setIsOpen(false)} to="/about" style={navLinkStyles}>About Us</NavLink>
-            <NavLink onClick={() => setIsOpen(false)} to="/contact" style={navLinkStyles}>Contact</NavLink>
-            <Link
-              to="/contact"
-              onClick={() => setIsOpen(false)}
-              className="bg-blue-600 text-white px-5 py-2 rounded-md text-sm font-semibold hover:bg-blue-700 transition-colors"
-            >
-              Get Quote
-            </Link>
-          </nav>
-        </div>
-      )}
+      {/* Added simple animation logic for visibility */}
+      <div
+        className={`md:hidden absolute top-full left-0 w-full bg-[#141625] border-b border-white/5 shadow-2xl overflow-hidden transition-all duration-300 ease-in-out ${
+          isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+        }`}
+      >
+        <nav className="flex flex-col items-center space-y-6 py-8">
+          <NavLink onClick={() => setIsOpen(false)} to="/" className={navLinkClasses}>Home</NavLink>
+          <NavLink onClick={() => setIsOpen(false)} to="/services" className={navLinkClasses}>Services</NavLink>
+          <NavLink onClick={() => setIsOpen(false)} to="/case-studies" className={navLinkClasses}>Case Studies</NavLink>
+          <NavLink onClick={() => setIsOpen(false)} to="/about" className={navLinkClasses}>About Us</NavLink>
+          <NavLink onClick={() => setIsOpen(false)} to="/contact" className={navLinkClasses}>Contact</NavLink>
+          
+          <Link
+            to="/contact"
+            onClick={() => setIsOpen(false)}
+            className="bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-8 py-3 rounded-full text-sm font-semibold shadow-lg"
+          >
+            Get Quote
+          </Link>
+        </nav>
+      </div>
     </header>
   );
 };

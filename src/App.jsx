@@ -16,7 +16,7 @@ import AboutPage from './pages/AboutPage';
 function App() {
   return (
     <BrowserRouter>
-      <div className="flex flex-col min-h-screen bg-gray-900 text-white">
+      <div className="flex flex-col min-h-screen bg-[#0a0b14] text-white font-sans selection:bg-indigo-500 selection:text-white">
         <Header />
         <main className="flex-grow">
           <Routes>
