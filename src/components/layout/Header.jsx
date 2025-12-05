@@ -13,6 +13,13 @@ const Header = () => {
   }, []);
 
   const navLinkClasses = ({ isActive }) =>
+    `block w-full text-left text-[17px] font-medium transition-colors ${
+      isActive
+        ? "text-orange-600"
+        : "text-slate-600 hover:text-slate-900"
+    }`;
+
+  const desktopNavLinkClasses = ({ isActive }) =>
     `text-[17px] font-medium transition-colors ${
       isActive
         ? "text-orange-600"
@@ -20,6 +27,8 @@ const Header = () => {
     }`;
 
   const toggleMenu = () => setIsOpen((prev) => !prev);
+
+  const closeMenu = () => setIsOpen(false);
 
   return (
     <header
@@ -34,25 +43,26 @@ const Header = () => {
         <Link
           to="/"
           className="text-3xl font-semibold tracking-tight text-slate-900"
+          onClick={closeMenu}
         >
           Zenithum<span className="text-orange-600">Media</span>
         </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-6">
-          <NavLink to="/" className={navLinkClasses}>
+          <NavLink to="/" className={desktopNavLinkClasses}>
             Home
           </NavLink>
-          <NavLink to="/services" className={navLinkClasses}>
+          <NavLink to="/services" className={desktopNavLinkClasses}>
             Services
           </NavLink>
-          <NavLink to="/case-studies" className={navLinkClasses}>
+          <NavLink to="/case-studies" className={desktopNavLinkClasses}>
             Case Studies
           </NavLink>
-          <NavLink to="/about" className={navLinkClasses}>
+          <NavLink to="/about" className={desktopNavLinkClasses}>
             About Us
           </NavLink>
-          <NavLink to="/contact" className={navLinkClasses}>
+          <NavLink to="/contact" className={desktopNavLinkClasses}>
             Contact
           </NavLink>
         </nav>
@@ -69,6 +79,7 @@ const Header = () => {
         <button
           onClick={toggleMenu}
           className="md:hidden inline-flex items-center justify-center rounded-md p-1.5 border border-slate-200 bg-white text-slate-800"
+          aria-label="Toggle navigation menu"
         >
           {isOpen ? <X size={18} /> : <Menu size={18} />}
         </button>
@@ -76,7 +87,7 @@ const Header = () => {
 
       {/* Mobile Dropdown */}
       <div
-        className={`md:hidden overflow-hidden border-b border-slate-200 bg-white transition-all duration-200 ${
+        className={`md:hidden overflow-hidden border-b border-slate-200 bg-white transition-[max-height] duration-200 ${
           isOpen ? "max-h-80" : "max-h-0"
         }`}
       >
@@ -84,42 +95,42 @@ const Header = () => {
           <NavLink
             to="/"
             className={navLinkClasses}
-            onClick={() => setIsOpen(false)}
+            onClick={closeMenu}
           >
             Home
           </NavLink>
           <NavLink
             to="/services"
             className={navLinkClasses}
-            onClick={() => setIsOpen(false)}
+            onClick={closeMenu}
           >
             Services
           </NavLink>
           <NavLink
             to="/case-studies"
             className={navLinkClasses}
-            onClick={() => setIsOpen(false)}
+            onClick={closeMenu}
           >
             Case Studies
           </NavLink>
           <NavLink
             to="/about"
             className={navLinkClasses}
-            onClick={() => setIsOpen(false)}
+            onClick={closeMenu}
           >
             About Us
           </NavLink>
           <NavLink
             to="/contact"
             className={navLinkClasses}
-            onClick={() => setIsOpen(false)}
+            onClick={closeMenu}
           >
             Contact
           </NavLink>
 
           <Link
             to="/contact"
-            onClick={() => setIsOpen(false)}
+            onClick={closeMenu}
             className="mt-2 inline-flex items-center justify-center rounded-full px-4 py-2 text-[13px] font-medium text-white bg-orange-500 hover:bg-orange-600 transition-colors"
           >
             Get Quote
