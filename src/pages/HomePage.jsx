@@ -11,9 +11,9 @@ import LookSection from '../components/sections/LookSection';
 
 const HomePage = () => {
 
-  useEffect(() => {
-  window.location.href = "https://sujeetkumar.space";
-  }, []);
+  // useEffect(() => {
+  // window.location.href = "https://sujeetkumar.space";
+  // }, []);
 
 
   
