@@ -114,19 +114,19 @@ const HomePage = () => {
       </section>
 
       {/* 4. Final CTA Section */}
-      <section className="py-24 px-6 bg-[#0a0b14] relative overflow-hidden">
+      <section className="py-24 px-6 bg-white relative overflow-hidden">
         
         {/* Decorative background for the CTA card */}
         <div className="container mx-auto relative z-10">
-          <div className="bg-gradient-to-r from-[#141625] to-[#0a0b14] rounded-3xl p-12 md:p-20 text-center border border-white/10 shadow-2xl relative overflow-hidden">
+          <div className="bg-gradient-to-r from-red-300 to-orange-400 rounded-3xl p-12 md:p-20 text-center border border-white/10 shadow-2xl relative overflow-hidden">
             
             {/* Glowing effect behind the card content */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-indigo-500/10 rounded-full blur-[100px] pointer-events-none"></div>
 
-            <h2 className="relative z-10 text-3xl md:text-5xl font-bold text-white mb-6">
+            <h2 className="relative z-10 text-3xl md:text-5xl font-bold text-black mb-6">
               Ready to <span className="text-indigo-400">Amplify</span> Your Growth?
             </h2>
-            <p className="relative z-10 text-gray-400 text-lg max-w-2xl mx-auto mb-10">
+            <p className="relative z-10 text-gray-600 text-lg max-w-2xl mx-auto mb-10">
               Let's build a winning strategy for your business. Stop guessing and start scaling with our data-driven approach.
             </p>
             

@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { NavLink } from "react-router-dom";
 
 function LookSection() {
   return (
@@ -75,18 +76,17 @@ function LookSection() {
             transition={{ duration: 0.5, delay: 0.35 }}
             className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center md:justify-start"
           >
-            <a
-              href="/services"
-              className="px-6 py-3 rounded-full bg-blue-600 text-white font-medium text-sm sm:text-[15px] hover:bg-blue-700 transition text-center"
+            <NavLink to="/services"
+             className="px-6 py-3 rounded-full bg-blue-600 text-white font-medium text-sm sm:text-[15px] hover:bg-blue-700 transition text-center"
             >
               Explore Services
-            </a>
-            <a
-              href="/about"
-              className="px-6 py-3 rounded-full border border-slate-300 text-slate-700 font-medium text-sm sm:text-[15px] hover:bg-slate-100 transition text-center"
+            </NavLink>
+            <NavLink 
+            to="/about" 
+            className="px-6 py-3 rounded-full border border-slate-300 text-slate-700 font-medium text-sm sm:text-[15px] hover:bg-slate-100 transition text-center"
             >
               Learn More
-            </a>
+            </NavLink>
           </motion.div>
         </motion.div>
 

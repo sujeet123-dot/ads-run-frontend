@@ -6,8 +6,8 @@ const ServiceCard = ({ title, description, icon }) => {
       
       <div className="
         block h-full rounded-2xl 
-        bg-[#141625] border border-white/5 
-        p-8 
+        bg-gradient-to-br from-red-300 to-orange-400 border border-orange/5 
+        p-8 backdrop-blur-lg shadow-lg
         transition-all duration-300 ease-out
         hover:-translate-y-2 hover:shadow-2xl hover:shadow-amber-500/10 hover:border-amber-500/30
       ">
@@ -17,7 +17,7 @@ const ServiceCard = ({ title, description, icon }) => {
           w-14 h-14 rounded-xl mb-6
           flex items-center justify-center 
           bg-indigo-500/10 text-indigo-400
-          group-hover:bg-indigo-600 group-hover:text-white
+          group-hover:bg-orange-600 group-hover:text-white
           transition-colors duration-300
         ">
           {/* We clone the icon to enforce size if needed, or just render it */}
@@ -28,12 +28,12 @@ const ServiceCard = ({ title, description, icon }) => {
         </div>
 
         {/* 3. Title */}
-        <h2 className="mt-4 text-xl font-bold text-white group-hover:text-red-200 transition-colors">
+        <h2 className="mt-4 text-xl font-bold text-black group-hover:text-red-700 transition-colors">
           {title}
         </h2>
 
         {/* 4. Description */}
-        <p className="mt-3 text-sm leading-relaxed text-gray-400">
+        <p className="mt-3 text-sm leading-relaxed text-gray-600">
           {description}
         </p>
       </div>

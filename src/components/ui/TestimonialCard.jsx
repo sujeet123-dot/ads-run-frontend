@@ -3,7 +3,7 @@ import { Quote } from 'lucide-react';
 
 const TestimonialCard = ({ quote, author, company, role }) => {
   return (
-    <div className="relative h-full p-8 rounded-2xl bg-[#141625] border border-white/5 shadow-xl transition-all duration-300 hover:border-indigo-500/30 hover:-translate-y-1">
+    <div className="relative h-full p-8 rounded-2xl bg-gradient-to-br from-red-300 to-orange-400 border border-white/5 shadow-xl transition-all duration-300 hover:border-indigo-500/30 hover:-translate-y-1">
       
       {/* Decorative Quote Icon (Faded Background) */}
       <div className="absolute top-6 right-6 text-indigo-500/10">
@@ -14,13 +14,13 @@ const TestimonialCard = ({ quote, author, company, role }) => {
       <div className="relative z-10 flex flex-col h-full justify-between">
         <div>
           {/* Star Rating (Optional visual flair) */}
-          <div className="flex gap-1 mb-4 text-amber-400 text-sm">
+          <div className="flex gap-1 mb-4 text-blue-800 text-sm">
             {[...Array(5)].map((_, i) => (
               <i key={i} className="fas fa-star fill-current">★</i>
             ))}
           </div>
 
-          <p className="text-gray-300 italic leading-relaxed text-lg mb-6">
+          <p className="text-gray-600 italic leading-relaxed text-lg mb-6">
             "{quote}"
           </p>
         </div>

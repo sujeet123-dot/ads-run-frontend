@@ -22,7 +22,7 @@ const Footer = () => {
           <div className="space-y-5">
             <Link
               to="/"
-              className="text-2xl font-extrabold uppercase bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 via-sky-500 to-teal-400 tracking-tight inline-block"
+              className="text-2xl font-extrabold uppercase bg-clip-text text-transparent bg-gradient-to-r from-amber-600 via-orange-500 to-red-600 tracking-tight inline-block"
             >
               ZenithumMedia
             </Link>

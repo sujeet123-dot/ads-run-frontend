@@ -22,7 +22,7 @@ const CaseStudyCard = ({ client, category, challenge, solution, results, index }
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true, margin: "-100px" }}
     transition={{ duration: 0.6, delay: index * 0.1 }}
-    className="group relative bg-[#141625] rounded-3xl border border-white/5 overflow-hidden hover:border-indigo-500/30 transition-all duration-300"
+    className="group relative bg-orange-400 rounded-3xl border border-white/5 overflow-hidden hover:border-indigo-500/30 transition-all duration-300"
   >
     <div className="grid md:grid-cols-5 h-full">
       
@@ -30,23 +30,23 @@ const CaseStudyCard = ({ client, category, challenge, solution, results, index }
       <div className="md:col-span-3 p-8 md:p-10 flex flex-col justify-between">
         <div>
           <div className="flex items-center gap-3 mb-6">
-            <span className="px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-400 text-xs font-bold uppercase tracking-wider border border-indigo-500/20">
+            <span className="px-3 py-1 rounded-full bg-indigo-500/10 text-red-800 text-xs font-bold uppercase tracking-wider border border-indigo-500/20">
               {category}
             </span>
           </div>
           
-          <h3 className="text-2xl md:text-3xl font-bold text-white mb-8 group-hover:text-indigo-200 transition-colors">
+          <h3 className="text-2xl md:text-3xl font-bold text-black mb-8 group-hover:text-gray-200 transition-colors">
             {client}
           </h3>
 
           <div className="space-y-8">
             <div className="flex gap-4">
-              <div className="mt-1 shrink-0 p-2 rounded-lg bg-rose-500/10 text-rose-400 h-fit">
+              <div className="mt-1 shrink-0 p-2 rounded-lg bg-rose-500/10 text-gray-800 h-fit">
                 <Target size={20} />
               </div>
               <div>
-                <h4 className="text-white font-semibold mb-2">The Challenge</h4>
-                <p className="text-gray-400 leading-relaxed text-sm md:text-base">{challenge}</p>
+                <h4 className="text-black font-semibold mb-2">The Challenge</h4>
+                <p className="text-gray-500 leading-relaxed text-sm md:text-base">{challenge}</p>
               </div>
             </div>
 
@@ -55,8 +55,8 @@ const CaseStudyCard = ({ client, category, challenge, solution, results, index }
                 <Zap size={20} />
               </div>
               <div>
-                <h4 className="text-white font-semibold mb-2">Our Solution</h4>
-                <p className="text-gray-400 leading-relaxed text-sm md:text-base">{solution}</p>
+                <h4 className="text-black font-semibold mb-2">Our Solution</h4>
+                <p className="text-gray-600 leading-relaxed text-sm md:text-base">{solution}</p>
               </div>
             </div>
           </div>
@@ -64,7 +64,7 @@ const CaseStudyCard = ({ client, category, challenge, solution, results, index }
       </div>
 
       {/* RIGHT PANEL: Results (2/5 width) */}
-      <div className="md:col-span-2 bg-gradient-to-br from-[#1e2130] to-[#141625] p-8 md:p-10 border-t md:border-t-0 md:border-l border-white/5 flex flex-col justify-center relative overflow-hidden">
+      <div className="md:col-span-2 bg-gradient-to-br bg-amber-600 p-8 md:p-10 border-t md:border-t-0 md:border-l border-white/5 flex flex-col justify-center relative overflow-hidden">
         {/* Decorative background icon */}
         <div className="absolute top-0 right-0 text-white/5 transform translate-x-1/3 -translate-y-1/3">
           <TrendingUp size={200} />
@@ -117,11 +117,11 @@ const CaseStudiesPage = () => {
   return (
     <>
       <Helmet>
-        <title>Case Studies | Adsonick</title>
+        <title>Case Studies | ZenithumMedia</title>
         <meta name="description" content="Real-world results. Discover how Adsonick drives growth through strategic ad campaigns." />
       </Helmet>
 
-      <section className="relative min-h-screen bg-[#0a0b14] pt-32 pb-20 px-6 overflow-hidden">
+      <section className="relative min-h-screen bg-white pt-32 pb-20 px-6 overflow-hidden">
         {/* Background Blobs */}
         <div className="absolute top-20 left-[-10%] w-96 h-96 bg-indigo-600 rounded-full mix-blend-screen filter blur-[128px] opacity-20 animate-blob"></div>
         <div className="absolute bottom-20 right-[-10%] w-96 h-96 bg-purple-600 rounded-full mix-blend-screen filter blur-[128px] opacity-20 animate-blob animation-delay-2000"></div>
@@ -130,10 +130,10 @@ const CaseStudiesPage = () => {
           
           {/* Header */}
           <div className="text-center max-w-3xl mx-auto mb-20">
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-              Proven <span className="bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-teal-500">Success Stories</span>
+            <h1 className="text-4xl md:text-6xl font-bold text-black mb-6">
+              Proven <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-400 to-red-500">Success Stories</span>
             </h1>
-            <p className="text-xl text-gray-400">
+            <p className="text-xl text-gray-600">
               We don't just promise results—we deliver them. See how we've helped businesses transform their digital presence.
             </p>
           </div>
@@ -148,11 +148,10 @@ const CaseStudiesPage = () => {
           {/* CTA at bottom */}
           <div className="mt-20 text-center">
             <p className="text-gray-400 mb-6">Ready to be our next success story?</p>
-            <a href="/contact" className="inline-flex items-center justify-center px-8 py-3 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-bold hover:shadow-lg hover:shadow-indigo-500/25 transition-all">
+            <a href="/contact" className="inline-flex items-center justify-center px-8 py-3 rounded-full bg-gradient-to-r from-orange-500 to-red-600 text-white font-bold hover:shadow-lg hover:shadow-indigo-500/25 transition-all">
               Start Your Campaign <ArrowUpRight className="ml-2" size={18} />
             </a>
           </div>
-
         </div>
       </section>
     </>

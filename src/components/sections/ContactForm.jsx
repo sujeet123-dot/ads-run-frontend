@@ -43,21 +43,21 @@ const ContactForm = () => {
   // Modern Input Styles
   const inputWrapperClass = "relative";
   const inputClasses = `
-    w-full rounded-xl bg-[#141625] border border-white/10 p-4 text-white placeholder-gray-500 
+    w-full rounded-xl bg-orange-100 border border-white/10 p-4 text-white placeholder-gray-500 
     focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 
     transition-all duration-300
   `;
   const errorClasses = "text-rose-400 text-xs mt-1 flex items-center gap-1";
 
   return (
-    <div className="w-full max-w-lg mx-auto bg-white/5 backdrop-blur-sm p-8 rounded-3xl border border-white/5 shadow-2xl">
+    <div className="w-full max-w-lg mx-auto bg-blue-950/5 backdrop-blur-sm p-8 rounded-3xl border border-white/5 shadow-2xl">
       
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6" noValidate>
         
         {/* Header inside form (Optional) */}
         <div className="text-center mb-6">
-          <h3 className="text-xl font-bold text-white">Send us a message</h3>
-          <p className="text-gray-400 text-sm">We usually reply within 24 hours.</p>
+          <h3 className="text-xl font-bold text-orange-600">Send us a message</h3>
+          <p className="text-gray-600 text-sm">We usually reply within 24 hours.</p>
         </div>
 
         {/* Name Field */}
@@ -118,7 +118,7 @@ const ContactForm = () => {
           type="submit" 
           disabled={isLoading}
           className={`
-            w-full rounded-full py-3.5 font-bold text-white flex items-center justify-center gap-2
+            w-full rounded-full py-3.5 font-bold text-black flex items-center justify-center gap-2
             transition-all duration-300 shadow-lg
             ${isLoading 
               ? 'bg-gray-700 cursor-not-allowed opacity-70' 

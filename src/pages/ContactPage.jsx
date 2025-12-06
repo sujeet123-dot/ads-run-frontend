@@ -11,7 +11,7 @@ const ContactPage = () => {
         <meta name="description" content="Get in touch with the Adsonick team. Visit us at Landmark Cyber Park, Gurgaon." />
       </Helmet>
 
-      <section className="relative min-h-screen bg-[#0a0b14] pt-32 pb-20 px-6 overflow-hidden">
+      <section className="relative min-h-screen bg-white pt-32 pb-20 px-6 overflow-hidden">
         
         {/* Background Animated Blobs */}
         <div className="absolute top-20 right-[-10%] w-96 h-96 bg-indigo-600 rounded-full mix-blend-screen filter blur-[128px] opacity-20 animate-blob"></div>
@@ -25,13 +25,13 @@ const ContactPage = () => {
               
               {/* Header Text */}
               <div>
-                <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                <h1 className="text-4xl md:text-5xl font-bold text-black mb-6">
                   Let's Start a <br />
-                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-teal-400">
+                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-500 to-red-400">
                     Conversation.
                   </span>
                 </h1>
-                <p className="text-gray-400 text-lg leading-relaxed">
+                <p className="text-gray-700 text-lg leading-relaxed">
                   Have a project in mind? We are currently accepting new partnerships.
                 </p>
               </div>
@@ -39,37 +39,37 @@ const ContactPage = () => {
               {/* Contact Cards */}
               <div className="grid gap-4">
                 {/* Email */}
-                <div className="flex items-center gap-4 p-4 rounded-2xl bg-[#141625] border border-white/5 hover:border-indigo-500/30 transition-all">
+                <div className="flex items-center gap-4 p-4 rounded-2xl bg-orange-400 border border-white/5 hover:border-indigo-500/30 transition-all">
                   <div className="p-3 rounded-xl bg-indigo-500/10 text-indigo-400">
                     <Mail size={24} />
                   </div>
                   <div>
-                    <h3 className="text-white font-semibold">Email Us</h3>
-                    <p className="text-gray-400 text-sm">shubhampandey@zenithummedia.com</p>
+                    <h3 className="text-black font-semibold">Email Us</h3>
+                    <p className="text-gray-600 text-sm">shubhampandey@zenithummedia.com</p>
                   </div>
                 </div>
 
                 {/* Phone */}
-                <div className="flex items-center gap-4 p-4 rounded-2xl bg-[#141625] border border-white/5 hover:border-indigo-500/30 transition-all">
+                <div className="flex items-center gap-4 p-4 rounded-2xl bg-orange-400 border border-white/5 hover:border-indigo-500/30 transition-all">
                   <div className="p-3 rounded-xl bg-purple-500/10 text-purple-400">
                     <Phone size={24} />
                   </div>
                   <div>
-                    <h3 className="text-white font-semibold">Call Us</h3>
-                    <p className="text-gray-400 text-sm">+91 8789685968</p>
+                    <h3 className="text-black font-semibold">Call Us</h3>
+                    <p className="text-gray-600 text-sm">+91 8789685968</p>
                   </div>
                 </div>
 
                 {/* Visit Us + Map Container */}
-                <div className="overflow-hidden rounded-2xl bg-[#141625] border border-white/5 hover:border-indigo-500/30 transition-all">
+                <div className="overflow-hidden rounded-2xl bg-orange-400 border border-white/5 hover:border-indigo-500/30 transition-all">
                   {/* Text Header */}
                   <div className="flex items-center gap-4 p-4 border-b border-white/5">
                     <div className="p-3 rounded-xl bg-teal-500/10 text-teal-400">
                       <MapPin size={24} />
                     </div>
                     <div>
-                      <h3 className="text-white font-semibold">Visit Us</h3>
-                      <p className="text-gray-400 text-sm">N50, Hargobind Enclave, Chhatarpur Delhi, 110068</p>
+                      <h3 className="text-black font-semibold">Visit Us</h3>
+                      <p className="text-gray-600 text-sm">N50, Hargobind Enclave, Chhatarpur Delhi, 110068</p>
                     </div>
                   </div>
 
