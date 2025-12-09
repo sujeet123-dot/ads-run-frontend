@@ -16,7 +16,7 @@ function LookSection() {
           className="flex justify-center md:justify-start order-1 md:order-none"
         >
           <motion.img
-            src="/images/about-preview.jpg"
+            src="/public/rst.png"
             alt="About ZenithumMedia"
             className="w-full max-w-sm sm:max-w-md aspect-[4/3] rounded-xl shadow-xl object-cover"
             whileHover={{

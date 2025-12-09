@@ -18,9 +18,6 @@ const HeroSection = () => {
             transition={{ duration: 0.6 }}
             className="text-center md:text-left"
           >
-            <div className="inline-flex items-center rounded-full border border-blue-100 bg-white px-4 py-1.5 text-xs font-medium text-blue-700 mb-5 shadow-sm">
-              🚀 ZenithumMedia · Performance Marketing Agency
-            </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-slate-900 mb-5">
               Scale your{" "}
