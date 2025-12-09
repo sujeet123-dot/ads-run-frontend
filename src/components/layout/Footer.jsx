@@ -161,7 +161,7 @@ const Footer = () => {
                   href="mailto:kishan.singla@adsonick.com"
                   className="hover:text-indigo-500 transition-colors break-all"
                 >
-                  shubhampandey@zenithummedia.com
+                  shikha@zenithummedia.com
                 </a>
               </li>
             </ul>
