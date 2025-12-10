@@ -3,7 +3,11 @@ import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { 
   Smartphone, Globe, Mail, Layers, BarChart2, 
-  Cpu, Search, Rocket, TrendingUp, ArrowRight 
+  Cpu, Search, Rocket, TrendingUp, ArrowRight, Megaphone,
+  HeartHandshake,
+  PieChart,
+  Sparkles,
+  MessageCircle
 } from 'lucide-react';
 
 // Import Components
@@ -14,36 +18,43 @@ const ServicesPage = () => {
   
   // 1. Detailed Services Data
   const services = [
+    
     {
-      icon: <Smartphone />,
-      title: "Mobile Advertising",
-      desc: "Reach millions of smartphone users worldwide. We specialize in high-volume CPI, CPA, and CPL campaigns that drive app installs and engagement."
+      icon: <BarChart2 />,
+      title: "Social Media Marketing",
+      desc: "Strategic social media growth for brands, creators, and public figures. Includes YouTube views, organic-like growth plans, political content services, and Twitter/X trending campaigns."
     },
     {
-      icon: <Globe />,
-      title: "Web Marketing",
-      desc: "Maximize desktop reach with high-quality traffic sources. We connect your brand with premium publishers to ensure high visibility and conversion."
+      icon: <Megaphone />,
+      title: "Lead Generation",
+      desc: "High-quality, sales-ready leads delivered through precise targeting. Consistent daily, weekly, or monthly lead plans with strong meeting conversion rates."
+    }, 
+    {
+      icon: <HeartHandshake />,
+      title: "Advertiser & Publisher Relations",
+      desc: "Connecting advertisers with premium publishers. We also help publishers with business development and inventory sales."
     },
     {
       icon: <Mail />,
-      title: "SMS & Email Marketing",
-      desc: "Personalized retention strategies. We create automated sequences that nurture leads and keep your existing customers engaged."
+      title: "Email Marketing",
+      desc: "Personalized cold outreach and automated email campaigns to increase conversions and drive predictable business results."
     },
     {
-      icon: <Layers />,
-      title: "Display & Programmatic",
-      desc: "Visually communicate your message. We design and deploy high-impact banners and native ads across a network of trusted sites."
+      icon: <PieChart />,
+      title: "Media Buying & Planning",
+      desc: "Google & Meta ads management with expert optimization, budget planning, and performance scaling for maximum ROI."
     },
     {
-      icon: <BarChart2 />,
-      title: "Social Media (SMM)",
-      desc: "Build a loyal community. We manage campaigns on Meta, LinkedIn, and TikTok using precise targeting based on Geo, OS, and interests."
+      icon: <Sparkles />,
+      title: "Branding Campaigns",
+      desc: "Visibility-boosting branding campaigns using CPM, CPC, and CPV models designed to enhance brand recall and trust."
     },
     {
-      icon: <Cpu />,
-      title: "Tech & Analytics",
-      desc: "Data-driven decisions. Our proprietary tracking technology ensures you have real-time visibility into every click and conversion."
+      icon: <MessageCircle />,
+      title: "Online Reputation Management",
+      desc: "Reputation building and protection for politicians, influencers, and public personalities, including election-focused digital strategies."
     }
+    
   ];
 
   // 2. Process Steps Data

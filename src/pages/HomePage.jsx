@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Smartphone, Globe, Layers, ArrowRight } from 'lucide-react'; 
+import { Smartphone, Globe, Layers, ArrowRight, BarChart2, Megaphone } from 'lucide-react'; 
 
 // Import Components
 import HeroSection from '../components/sections/HeroSection';
@@ -20,9 +20,9 @@ const HomePage = () => {
   // Data for Services Preview
   const services = [
     {
-      icon: <Smartphone />,
-      title: "Mobile Advertising",
-      desc: "Reach millions of smartphone users worldwide with our targeted campaigns and real-time bidding strategies."
+      icon: <BarChart2 />,
+      title: "Social Media Marketing",
+      desc: "Strategic social media growth for brands, creators, and public figures. Includes YouTube views, organic-like growth plans, political content services, and Twitter/X trending campaigns."
     },
     {
       icon: <Globe />,
@@ -30,10 +30,10 @@ const HomePage = () => {
       desc: "Maximize desktop reach with high-quality traffic sources, premium placements, and data-driven optimization."
     },
     {
-      icon: <Layers />,
-      title: "Display & Programmatic",
-      desc: "Visually communicate your message through high-impact banners, video ads, and native placements."
-    }
+      icon: <Megaphone />,
+      title: "Lead Generation",
+      desc: "High-quality, sales-ready leads delivered through precise targeting. Consistent daily, weekly, or monthly lead plans with strong meeting conversion rates."
+    },
   ];
 
   return (
