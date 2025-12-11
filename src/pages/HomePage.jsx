@@ -33,7 +33,7 @@ const HomePage = () => {
   return (
     <>
       <Helmet>
-        <title>ZenithumMedia | Performance Marketing Agency</title>
+        <title>ZenithumMedia | Advertising Agency</title>
         <meta name="description" content="Expertly managed ad campaigns on Google, Meta, and LinkedIn to scale your business. Maximize your ROI with Adsonick." />
       </Helmet>
 
