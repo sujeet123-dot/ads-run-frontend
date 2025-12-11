@@ -1,13 +1,50 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/logo3.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>ZenithumMedia</title>
+
+    <!-- Favicon / Logo -->
+    <link rel="icon" type="image/png" href="/logo3.png" />
+
+    <!-- Open Graph (for social preview + better SEO) -->
+    <meta property="og:title" content="Zenithum Media" />
+    <meta
+      property="og:description"
+      content="Performance Marketing, Branding, Media Buying & Lead Generation"
+    />
+    <meta property="og:image" content="https://zenithummedia.com/logo3.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://zenithummedia.com" />
+
+    <!-- JSON-LD: Google uses this to show your logo in Search -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Zenithum Media",
+        "url": "https://zenithummedia.com",
+        "logo": "https://zenithummedia.com/logo3.png",
+      }
+    </script>
+
+    <!-- Google Tag (Analytics) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SNCY0K36MC"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-SNCY0K36MC");
+    </script>
   </head>
+
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
+
