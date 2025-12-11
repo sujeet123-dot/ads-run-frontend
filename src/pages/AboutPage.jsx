@@ -5,9 +5,9 @@ import { motion } from 'framer-motion';
 
 const AboutPage = () => {
   const stats = [
-    { label: "Years Experience", value: "8+" },
-    { label: "Projects Delivered", value: "500+" },
-    { label: "Team Members", value: "45+" },
+    { label: "Years Experience", value: "3+" },
+    { label: "Projects Delivered", value: "46+" },
+    { label: "Team Members", value: "7+" },
     { label: "Client Retention", value: "98%" },
   ];
 
@@ -51,7 +51,7 @@ const AboutPage = () => {
               We Are Your <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-500 to-red-400">Growth Partners</span>
             </h1>
             <p className="text-xl text-gray-400 leading-relaxed mb-12">
-              Adsonick was founded on a simple principle: advertising should be an investment, not an expense. We are a collective of data analysts, creative strategists, and digital marketers.
+              Zenithummedia was founded on a simple principle: advertising should be an investment, not an expense. We are a collective of data analysts, creative strategists, and digital marketers.
             </p>
           </motion.div>
 
