@@ -10,12 +10,6 @@ import Button from '../components/ui/Button';
 import LookSection from '../components/sections/LookSection';
 
 const HomePage = () => {
-
-  // useEffect(() => {
-  // window.location.href = "https://sujeetkumar.space";
-  // }, []);
-
-
   
   // Data for Services Preview
   const services = [

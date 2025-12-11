@@ -56,7 +56,7 @@ const ContactPage = () => {
                   </div>
                   <div>
                     <h3 className="text-black font-semibold">Call Us</h3>
-                    <p className="text-gray-600 text-sm">+91 </p>
+                    <p className="text-gray-600 text-sm">+91 8789596859</p>
                   </div>
                 </div>
 
@@ -69,12 +69,12 @@ const ContactPage = () => {
                     </div>
                     <div>
                       <h3 className="text-black font-semibold">Visit Us</h3>
-                      <p className="text-gray-600 text-sm">N50, Hargobind Enclave, Chhatarpur Delhi, 110068</p>
+                      <p className="text-gray-600 text-sm">Delhi, India</p>
                     </div>
                   </div>
 
                   {/* Embedded Map */}
-                  <div className="h-64 w-full relative grayscale hover:grayscale-0 transition-all duration-500">
+                  {/* <div className="h-64 w-full relative grayscale hover:grayscale-0 transition-all duration-500">
                     <iframe 
                       title="Adsonick Office Location"
                       width="100%" 
@@ -84,9 +84,8 @@ const ContactPage = () => {
                       allowFullScreen
                       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1085.8410761646342!2d77.18768123754779!3d28.49053218511437!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d1e2ecad8dcf1%3A0x32353872ae4e4bf!2sN%2F50A%2C%20Street%20Number%204%2C%20Rajpur%20Khurd%20Extension%2C%20Chhatarpur%2C%20New%20Delhi%2C%20Delhi%20110068!5e1!3m2!1sen!2sin!4v1764853872007!5m2!1sen!2sin"
                     ></iframe>
-                    {/* Dark Overlay for map to blend in (fades out on hover) */}
                     <div className="absolute inset-0 bg-indigo-900/20 pointer-events-none mix-blend-overlay"></div>
-                  </div>
+                  </div> */}
                 </div>
 
               </div>

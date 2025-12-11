@@ -13,6 +13,13 @@ import {
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
+  const socialLinks = [
+    { icon: Facebook, url: "https://www.facebook.com/zenithummedia" },
+    { icon: Twitter, url: "https://twitter.com/zenithummedia" },
+    { icon: Linkedin, url: "https://www.linkedin.com/company/zenithummedia/" },
+    { icon: Instagram, url: "https://www.instagram.com/zenithummedia" },
+  ];
+
   return (
     <footer className="bg-gradient-to-b from-slate-50 via-white to-white pt-16 pb-8 border-t border-slate-200/70 text-slate-600 text-sm">
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -34,10 +41,12 @@ const Footer = () => {
 
             {/* Social Icons */}
             <div className="flex flex-wrap gap-3 mt-2">
-              {[Facebook, Twitter, Linkedin, Instagram].map((Icon, index) => (
+              {socialLinks.map(({ icon: Icon, url }, index) => (
                 <a
                   key={index}
-                  href="#"
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm hover:shadow-md hover:-translate-y-[2px] transition-all duration-200 hover:border-indigo-300 hover:text-indigo-500 text-slate-500"
                 >
                   <Icon size={18} />
@@ -138,9 +147,7 @@ const Footer = () => {
                 <div className="mt-1 flex h-8 w-8 items-center justify-center rounded-full bg-indigo-50 text-indigo-600 shrink-0">
                   <MapPin size={18} />
                 </div>
-                <span className="text-slate-600">
-                  N50B, Hargovind Enclave, Chhatarpur, Delhi 110068
-                </span>
+                <span className="text-slate-600">Delhi, India</span>
               </li>
               <li className="flex items-center gap-3">
                 <div className="flex h-8 w-8 items-center justify-center rounded-full bg-indigo-50 text-indigo-600 shrink-0">
@@ -150,7 +157,7 @@ const Footer = () => {
                   href="tel:+917206991113"
                   className="hover:text-indigo-500 transition-colors"
                 >
-                  +91 
+                  +91 8789685968
                 </a>
               </li>
               <li className="flex items-center gap-3">
