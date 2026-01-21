@@ -12,6 +12,9 @@ import ServicesPage from './pages/ServicesPage';
 import CaseStudiesPage from './pages/CaseStudiesPage';
 import ContactPage from './pages/ContactPage';
 import AboutPage from './pages/AboutPage';
+import ScrollToTop from './components/sections/ScrollToTop';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsAndConditions from './pages/TermsAndCondition';
 
 function App() {
   return (
@@ -19,12 +22,16 @@ function App() {
       <div className="flex flex-col min-h-screen bg-[#0a0b14] text-white font-sans selection:bg-indigo-500 selection:text-white">
         <Header />
         <main className="flex-grow">
+          <ScrollToTop />
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/case-studies" element={<CaseStudiesPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/contact" element={<ContactPage />} />
+
+            <Route path="/privacy" element={<PrivacyPolicy />} />
+            <Route path="/terms" element={<TermsAndConditions />} />
           </Routes>
         </main>
         <Footer />

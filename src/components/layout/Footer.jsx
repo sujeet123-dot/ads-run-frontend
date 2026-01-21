@@ -120,14 +120,6 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  to="/refund"
-                  className="hover:text-indigo-500 transition-colors"
-                >
-                  Refund Policy
-                </Link>
-              </li>
-              <li>
-                <Link
                   to="/publishers"
                   className="hover:text-indigo-500 transition-colors"
                 >
