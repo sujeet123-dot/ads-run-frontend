@@ -45,7 +45,7 @@ const ContactPage = () => {
                   </div>
                   <div>
                     <h3 className="text-black font-semibold">Email Us</h3>
-                    <p className="text-gray-600 text-sm">shikha@zenithummedia.com</p>
+                    <p className="text-gray-600 text-sm">shubham@zenithummedia.com</p>
                   </div>
                 </div>
 
@@ -76,7 +76,7 @@ const ContactPage = () => {
                   {/* Embedded Map */}
                   {/* <div className="h-64 w-full relative grayscale hover:grayscale-0 transition-all duration-500">
                     <iframe 
-                      title="Adsonick Office Location"
+                      title="zenithummedia Office Location"
                       width="100%" 
                       height="100%" 
                       style={{ border: 0 }}
