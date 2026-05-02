@@ -1,35 +1,18 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Smartphone, Globe, Layers, ArrowRight, BarChart2, Megaphone } from 'lucide-react'; 
 
 // Import Components
 import HeroSection from '../components/sections/HeroSection';
-import TestimonialCard from '../components/ui/TestimonialCard'; 
-import ServiceCard from '../components/ui/ServiceCard'
-import Button from '../components/ui/Button';
+import ClientLogosSection from '../components/sections/ClientLogosSection';
+import StatsSection from '../components/sections/StatsSection';
+import ServicesPreviewSection from '../components/sections/ServicesPreviewSection';
+import TestimonialsSection from '../components/sections/TestimonialsSection';
+import FAQSection from '../components/sections/FAQSection';
+import CTASection from '../components/sections/CTASection';
 import LookSection from '../components/sections/LookSection';
+import HeroSection1 from '../components/sections/HeroSection1';
 
 const HomePage = () => {
-  
-  // Data for Services Preview
-  const services = [
-    {
-      icon: <BarChart2 />,
-      title: "Social Media Marketing",
-      desc: "Strategic social media growth for brands, creators, and public figures. Includes YouTube views, organic-like growth plans, political content services, and Twitter/X trending campaigns."
-    },
-    {
-      icon: <Globe />,
-      title: "Web Marketing",
-      desc: "Maximize desktop reach with high-quality traffic sources, premium placements, and data-driven optimization."
-    },
-    {
-      icon: <Megaphone />,
-      title: "Lead Generation",
-      desc: "High-quality, sales-ready leads delivered through precise targeting. Consistent daily, weekly, or monthly lead plans with strong meeting conversion rates."
-    },
-  ];
-
   return (
     <>
       <Helmet>
@@ -37,102 +20,28 @@ const HomePage = () => {
         <meta name="description" content="Expertly managed ad campaigns on Google, Meta, and LinkedIn to scale your business. Maximize your ROI with Adsonick." />
       </Helmet>
 
-      {/* 1. Hero Section (Already styled) */}
+      {/* 1. Hero Section */}
       <HeroSection />
 
-      {/* 2. Services Preview Section */}
-      <section className="py-24 bg-purple-50 px-6">
-        <div className="container mx-auto">
-          
-          <div className="text-center mb-16 max-w-3xl mx-auto">
-            <h2 className="text-3xl md:text-5xl font-bold text-black mb-6">
-              Holistic <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-teal-400">Growth Solutions</span>
-            </h2>
-            <p className="text-gray-800 text-lg">
-              We provide a full spectrum of digital marketing services designed to work together for maximum impact.
-            </p>
-          </div>
+      {/* 2. Client Logos Carousel */}
+      <ClientLogosSection />
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {services.map((s, i) => (
-              <ServiceCard 
-                key={i} 
-                icon={s.icon} 
-                title={s.title} 
-                description={s.desc} 
-              />
-            ))}
-          </div>
+      {/* 3. Stats Counter */}
+      <StatsSection />
 
-          <div className="mt-12 text-center">
-            <Button to="/services" secondary className="gap-2 group">
-              View All Services <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-            </Button>
-          </div>
-
-        </div>
-      </section>
+      {/* 4. Services Preview Section */}
+      <ServicesPreviewSection />
 
       <LookSection />
 
-      {/* 3. Testimonials Section */}
-      <section className="py-24 bg-[#e9eaee] px-6 border-t border-white/5">
-        <div className="container mx-auto">
-          
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold text-orange-700 mb-6">Trusted by Leaders</h2>
-            <p className="text-gray-600 text-lg">
-              Our results speak for themselves. Here's what our partners have to say.
-            </p>
-          </div>
+      {/* 5. Testimonials Section */}
+      <TestimonialsSection />
 
-          <div className="grid md:grid-cols-3 gap-8">
-            <TestimonialCard 
-              quote="ZenithumMedia doubled our lead generation in just 3 months. Their attention to detail and data transparency is unmatched in the industry."
-              author="Jane Doe"
-              company="CEO, TechStart Inc."
-            />
-            <TestimonialCard 
-              quote="The most transparent and effective ad agency we've ever worked with. Our ROAS has never been higher, and communication is seamless."
-              author="John Smith"
-              company="CMO, FashionVerse"
-            />
-             <TestimonialCard 
-              quote="They took the time to understand our niche B2B market and delivered a highly targeted LinkedIn campaign that exceeded all expectations."
-              author="Emily White"
-              company="Founder, Innovate Solutions"
-            />
-          </div>
+      {/* 6. FAQ Section */}
+      <FAQSection />
 
-        </div>
-      </section>
-
-      {/* 4. Final CTA Section */}
-      <section className="py-24 px-6 bg-white relative overflow-hidden">
-        
-        {/* Decorative background for the CTA card */}
-        <div className="container mx-auto relative z-10">
-          <div className="bg-gradient-to-r from-red-300 to-orange-400 rounded-3xl p-12 md:p-20 text-center border border-white/10 shadow-2xl relative overflow-hidden">
-            
-            {/* Glowing effect behind the card content */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-indigo-500/10 rounded-full blur-[100px] pointer-events-none"></div>
-
-            <h2 className="relative z-10 text-3xl md:text-5xl font-bold text-black mb-6">
-              Ready to <span className="text-indigo-400">Amplify</span> Your Growth?
-            </h2>
-            <p className="relative z-10 text-gray-600 text-lg max-w-2xl mx-auto mb-10">
-              Let's build a winning strategy for your business. Stop guessing and start scaling with our data-driven approach.
-            </p>
-            
-            <div className="relative z-10">
-              <Button to="/contact" primary className="text-lg px-10 py-4 shadow-xl shadow-indigo-500/20">
-                Schedule Your Free Call
-              </Button>
-            </div>
-
-          </div>
-        </div>
-      </section>
+      {/* 7. Final CTA Section */}
+      <CTASection />
     </>
   )
 }

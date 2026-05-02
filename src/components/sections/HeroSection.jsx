@@ -1,157 +1,211 @@
 import React from "react";
-import { ArrowRight, BarChart2 } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
-import Button from "../ui/Button";
+import { Link } from "react-router-dom";
+
+// Deterministic star positions
+const STARS = Array.from({ length: 90 }, (_, i) => ({
+  id: i,
+  top: `${((i * 137.508) % 100).toFixed(3)}%`,
+  left: `${((i * 97.31) % 100).toFixed(3)}%`,
+  size: i % 5 === 0 ? 2.5 : i % 3 === 0 ? 1.5 : 1,
+  opacity: 0.15 + ((i * 0.07) % 0.45),
+}));
+
+// Word-by-word headline animation
+const HEADLINE_1 = ["Strategic", "Campaigns", "for"];
+const HEADLINE_2 = ["Modern", "Businesses"];
+
+const wordVariant = {
+  hidden: { opacity: 0, y: 40, filter: "blur(8px)" },
+  show: (i) => ({
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.1 + i * 0.1 },
+  }),
+};
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  show: (delay = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut", delay },
+  }),
+};
 
 const HeroSection = () => {
   return (
-    <section className="relative bg-slate-50">
-      {/* subtle background shape */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-64 bg-gradient-to-br from-blue-100/60 via-slate-50 to-cyan-50/40" />
+    <section className="relative min-h-screen bg-black overflow-hidden flex items-center justify-center">
 
-      <div className="relative max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* Left: Text */}
-          <motion.div
-            initial={{ opacity: 0, x: -32 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center md:text-left"
-          >
+      {/* ── Twinkling star field ── */}
+      {STARS.map(({ id, top, left, size, opacity }) => (
+        <motion.div
+          key={id}
+          className="absolute rounded-full bg-white pointer-events-none"
+          style={{ top, left, width: size, height: size }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: [0, opacity, opacity * 0.4, opacity] }}
+          transition={{
+            duration: 3 + (id % 4),
+            delay: (id * 0.05) % 3,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+      ))}
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-slate-900 mb-5">
-              Scale your{" "}
-              <span className="text-orange-600">paid campaigns</span>
-              <span className="block text-slate-900">
-                with predictable results.
-              </span>
-            </h1>
+      {/* ── Orange glowing orb — breathes slowly ── */}
+      <motion.div
+        initial={{ scale: 0.6, opacity: 0 }}
+        animate={{
+          scale: [0.85, 1, 0.9, 1],
+          opacity: [0, 0.5, 0.45, 0.5],
+        }}
+        transition={{
+          duration: 6,
+          times: [0, 0.3, 0.6, 1],
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[55%] w-[600px] h-[600px] rounded-full pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(circle at 38% 38%, #f97316 0%, #ea580c 28%, #c2410c 55%, transparent 78%)",
+          filter: "blur(72px)",
+        }}
+      />
 
-            <p className="text-base sm:text-lg text-slate-600 mb-8 max-w-xl mx-auto md:mx-0 leading-relaxed">
-              We manage and optimize ad campaigns across Meta, Google, and
-              programmatic to bring you profitable, trackable growth — not just
-              clicks and impressions.
-            </p>
+      {/* ── Secondary smaller orb (offset) ── */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: [0.12, 0.22, 0.12], x: [0, 30, 0], y: [0, -20, 0] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+        className="absolute top-1/2 left-1/2 -translate-x-1/4 -translate-y-1/2 w-[320px] h-[320px] rounded-full pointer-events-none"
+        style={{
+          background: "radial-gradient(circle, #fb923c 0%, transparent 70%)",
+          filter: "blur(50px)",
+        }}
+      />
 
-            <div className="flex flex-wrap justify-center md:justify-start gap-4">
-              <Button
-                to="/contact"
-                primary
-                className="flex items-center gap-2 text-sm sm:text-base !bg-blue-600 hover:!bg-blue-700"
+      {/* ── Content ── */}
+      <div className="relative z-10 text-center max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-24 w-full">
+
+        {/* Badge */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.85, y: 12 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 0.55, ease: "easeOut", delay: 0.05 }}
+          className="inline-flex items-center gap-2 mb-8 px-4 py-1.5 rounded-full border border-orange-500/30 bg-orange-500/10"
+        >
+          <span className="w-2 h-2 rounded-full bg-orange-400 animate-pulse" />
+          <span className="text-orange-400 text-sm font-semibold tracking-wide">
+            Data-Driven Ad Agency
+          </span>
+        </motion.div>
+
+        {/* ── Headline — word by word with blur-in ── */}
+        <h1 className="text-5xl sm:text-6xl lg:text-[72px] font-bold text-white leading-[1.12] tracking-tight mb-6">
+          <div className="flex flex-wrap justify-center gap-x-[0.3em] gap-y-0">
+            {HEADLINE_1.map((word, i) => (
+              <motion.span
+                key={word}
+                custom={i}
+                variants={wordVariant}
+                initial="hidden"
+                animate="show"
+                className={word === "Campaigns" ? "text-orange-400" : ""}
               >
-                Book a Strategy Call
-                <ArrowRight size={18} />
-              </Button>
-
-              <Button
-                to="/case-studies"
-                secondary
-                className="text-sm sm:text-base border border-slate-300 text-slate-800 hover:border-slate-400"
+                {word}
+              </motion.span>
+            ))}
+          </div>
+          <div className="flex flex-wrap justify-center gap-x-[0.3em]">
+            {HEADLINE_2.map((word, i) => (
+              <motion.span
+                key={word}
+                custom={HEADLINE_1.length + i}
+                variants={wordVariant}
+                initial="hidden"
+                animate="show"
+                className={word === "Businesses" ? "text-orange-400" : ""}
               >
-                View Case Studies
-              </Button>
-            </div>
+                {word}
+              </motion.span>
+            ))}
+          </div>
+        </h1>
 
-            <p className="mt-4 text-xs sm:text-sm text-slate-500">
-              Average ROAS improvement with ZenithumMedia clients:{" "}
-              <span className="font-semibold text-emerald-600">+118%</span>
-            </p>
+        {/* Subtitle */}
+        <motion.p
+          variants={fadeUp}
+          initial="hidden"
+          animate="show"
+          custom={0.65}
+          className="text-base sm:text-lg text-gray-400 leading-relaxed max-w-lg mx-auto mb-10"
+        >
+          We bring high-performance ad solutions to your fingertips and
+          streamline your growth across every channel.
+        </motion.p>
+
+        {/* CTA Buttons */}
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          animate="show"
+          custom={0.82}
+          className="flex flex-wrap items-center justify-center gap-4"
+        >
+          <motion.div whileHover={{ scale: 1.04, y: -2 }} whileTap={{ scale: 0.97 }} transition={{ type: "spring", stiffness: 400, damping: 20 }}>
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-orange-500 text-white text-[15px] font-semibold hover:bg-orange-600 transition-colors duration-200 shadow-lg shadow-orange-900/40"
+            >
+              Get in touch
+              <ArrowUpRight size={17} />
+            </Link>
           </motion.div>
 
-          {/* Right: Analytics card */}
-          <motion.div
-            initial={{ opacity: 0, x: 32 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="hidden md:block"
-          >
-            <div className="relative">
-              <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-blue-100/70 via-white to-teal-100/60 blur-sm" />
-
-              <div className="relative bg-white border border-slate-200 rounded-2xl shadow-md p-6">
-                {/* Header */}
-                <div className="flex items-center justify-between mb-6">
-                  <div className="flex items-center gap-3">
-                    <div className="h-11 w-11 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600">
-                      <BarChart2 size={22} />
-                    </div>
-                    <div>
-                      <h3 className="text-sm font-semibold text-slate-900">
-                        Performance Overview
-                      </h3>
-                      <p className="text-[11px] text-slate-500">
-                        Last 30 days · All channels
-                      </p>
-                    </div>
-                  </div>
-                  <span className="rounded-full bg-emerald-50 px-3 py-1 text-[11px] font-medium text-emerald-700">
-                    +132% ROAS
-                  </span>
-                </div>
-
-                {/* Rows */}
-                <div className="space-y-4 mb-6">
-                  <div>
-                    <div className="flex justify-between text-[12px] mb-1.5">
-                      <span className="text-slate-500">Google Search</span>
-                      <span className="text-emerald-600 font-medium">
-                        +118%
-                      </span>
-                    </div>
-                    <div className="h-2.5 rounded-full bg-slate-100 overflow-hidden">
-                      <div className="h-full w-[78%] rounded-full bg-blue-600" />
-                    </div>
-                  </div>
-                  <div>
-                    <div className="flex justify-between text-[12px] mb-1.5">
-                      <span className="text-slate-500">Meta Ads</span>
-                      <span className="text-emerald-600 font-medium">+96%</span>
-                    </div>
-                    <div className="h-2.5 rounded-full bg-slate-100 overflow-hidden">
-                      <div className="h-full w-[64%] rounded-full bg-cyan-500" />
-                    </div>
-                  </div>
-                  <div>
-                    <div className="flex justify-between text-[12px] mb-1.5">
-                      <span className="text-slate-500">Remarketing</span>
-                      <span className="text-emerald-600 font-medium">
-                        +171%
-                      </span>
-                    </div>
-                    <div className="h-2.5 rounded-full bg-slate-100 overflow-hidden">
-                      <div className="h-full w-[88%] rounded-full bg-emerald-500" />
-                    </div>
-                  </div>
-                </div>
-
-                {/* Bottom stats */}
-                <div className="grid grid-cols-2 gap-4 border-t border-slate-100 pt-4">
-                  <div>
-                    <p className="text-[11px] text-slate-500 mb-1">Ad Spend</p>
-                    <p className="text-sm font-semibold text-slate-900">
-                      ₹4.3L
-                    </p>
-                    <p className="text-[11px] text-emerald-600 mt-0.5">
-                      +29% vs last month
-                    </p>
-                  </div>
-                  <div>
-                    <p className="text-[11px] text-slate-500 mb-1">
-                      Revenue Attributed
-                    </p>
-                    <p className="text-sm font-semibold text-slate-900">
-                      ₹19.2L
-                    </p>
-                    <p className="text-[11px] text-slate-500 mt-0.5">
-                      Avg CPA: ₹205
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <motion.div whileHover={{ scale: 1.04, y: -2 }} whileTap={{ scale: 0.97 }} transition={{ type: "spring", stiffness: 400, damping: 20 }}>
+            <Link
+              to="/services"
+              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl border border-gray-700 text-white text-[15px] font-semibold hover:border-orange-500/50 bg-gray-900/40 hover:bg-orange-500/5 transition-all duration-200"
+            >
+              View services
+            </Link>
           </motion.div>
-        </div>
+        </motion.div>
+
+        {/* ── Floating stats strip ── */}
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          animate="show"
+          custom={1.05}
+          className="mt-16 flex flex-wrap items-center justify-center gap-x-10 gap-y-4"
+        >
+          {[
+            { value: "300+", label: "Campaigns" },
+            { value: "50+",  label: "Clients"   },
+            { value: "105%", label: "Avg. ROAS Uplift" },
+          ].map(({ value, label }, i) => (
+            <motion.div
+              key={label}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 1.1 + i * 0.12 }}
+              className="flex flex-col items-center gap-0.5"
+            >
+              <span className="text-2xl font-extrabold text-orange-400 tabular-nums">{value}</span>
+              <span className="text-xs text-gray-500 font-medium uppercase tracking-widest">{label}</span>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
+
+      {/* ── Bottom gradient fade ── */}
+      <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-black to-transparent pointer-events-none" />
     </section>
   );
 };
