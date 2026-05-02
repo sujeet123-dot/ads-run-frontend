@@ -10,7 +10,6 @@ import TestimonialsSection from '../components/sections/TestimonialsSection';
 import FAQSection from '../components/sections/FAQSection';
 import CTASection from '../components/sections/CTASection';
 import LookSection from '../components/sections/LookSection';
-import HeroSection1 from '../components/sections/HeroSection1';
 
 const HomePage = () => {
   return (
