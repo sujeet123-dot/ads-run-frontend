@@ -49,7 +49,7 @@ const ClientLogosSection = () => {
           transition={{ duration: 0.5 }}
           className="text-sm font-semibold text-gray-500 uppercase tracking-widest"
         >
-          Trusted by 650+ brands & businesses
+          Trusted by 50+ brands & businesses
         </motion.p>
       </div>
 

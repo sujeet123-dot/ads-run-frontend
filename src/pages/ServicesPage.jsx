@@ -13,6 +13,7 @@ import CTASection from '../components/sections/CTASection';
 const SERVICES = [
   {
     icon: Sparkles,
+    slug: "branding-campaigns",
     title: "Branding Campaigns",
     desc: "Multi-channel visibility campaigns that boost brand recall and trust.",
     features: ["CPM, CPC & CPV models", "Brand recall enhancement", "Cross-channel distribution"],
@@ -20,6 +21,7 @@ const SERVICES = [
   },
   {
     icon: BarChart2,
+    slug: "social-media-marketing",
     title: "Social Media Marketing",
     desc: "Strategic social media growth for brands, creators, and public figures.",
     features: ["YouTube & Twitter/X campaigns", "Organic-like growth plans", "Political content services"],
@@ -27,6 +29,7 @@ const SERVICES = [
   },
   {
     icon: Megaphone,
+    slug: "lead-generation",
     title: "Lead Generation",
     desc: "High-quality, sales-ready leads via precise targeting and proven funnels.",
     features: ["Daily / weekly / monthly lead plans", "Strong meeting conversion rates", "Multi-channel targeting"],
@@ -148,7 +151,7 @@ const WHY = [
   },
 ];
 
-const ServiceCard = ({ icon: Icon, title, desc, features, color, bg, border, index }) => (
+const ServiceCard = ({ icon: Icon, slug, title, desc, features, color, bg, border, index }) => (
   <motion.div
     initial={{ opacity: 0, y: 36 }}
     whileInView={{ opacity: 1, y: 0 }}
@@ -182,10 +185,10 @@ const ServiceCard = ({ icon: Icon, title, desc, features, color, bg, border, ind
     </ul>
 
     <Link
-      to="/contact"
+      to={slug ? `/services/${slug}` : '/contact'}
       className={`relative inline-flex items-center gap-1.5 text-sm font-semibold ${color} mt-1`}
     >
-      Get Started
+      {slug ? 'Learn More' : 'Get Started'}
       <ArrowRight size={14} className="transition-transform duration-200 group-hover:translate-x-1" />
     </Link>
   </motion.div>

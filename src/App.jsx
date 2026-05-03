@@ -15,6 +15,8 @@ import AboutPage from './pages/AboutPage';
 import ScrollToTop from './components/sections/ScrollToTop';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsAndConditions from './pages/TermsAndCondition';
+import PublisherPage from './pages/PublisherPage';
+import ServiceDetailPage from './pages/ServiceDetailPage';
 
 function App() {
   return (
@@ -26,10 +28,12 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/services" element={<ServicesPage />} />
+            <Route path="/services/:slug" element={<ServiceDetailPage />} />
             <Route path="/case-studies" element={<CaseStudiesPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/contact" element={<ContactPage />} />
 
+            <Route path="/publisher" element={<PublisherPage />} />
             <Route path="/privacy" element={<PrivacyPolicy />} />
             <Route path="/terms" element={<TermsAndConditions />} />
           </Routes>

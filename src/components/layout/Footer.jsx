@@ -6,18 +6,19 @@ import { MapPin, Phone, Mail, Facebook, Twitter, Linkedin, Instagram, ArrowRight
 const QUICK_LINKS = [
   { label: "Home", to: "/" },
   { label: "Services", to: "/services" },
+  { label: "Publisher", to: "/publisher" },
   { label: "Case Studies", to: "/case-studies" },
   { label: "About Us", to: "/about" },
   { label: "Contact", to: "/contact" },
 ];
 
 const SERVICES_LINKS = [
-  { label: "Branding Campaigns", to: "/services" },
-  { label: "Social Media Marketing", to: "/services" },
-  { label: "Google & Search Ads", to: "/services" },
-  { label: "Lead Generation", to: "/services" },
-  { label: "Programmatic Advertising", to: "/services" },
-  { label: "Analytics & Reporting", to: "/services" },
+  { label: "Branding Campaigns", to: "/services/branding-campaigns" },
+  { label: "Social Media Marketing", to: "/services/social-media-marketing" },
+  { label: "Google & Search Ads", to: "/services/google-search-ads" },
+  { label: "Lead Generation", to: "/services/lead-generation" },
+  { label: "Programmatic Advertising", to: "/services/programmatic-advertising" },
+  { label: "Analytics & Reporting", to: "/services/analytics-reporting" },
 ];
 
 const LEGAL_LINKS = [
