@@ -89,6 +89,7 @@ const ServiceCard = ({ icon: Icon, title, desc, color, bg, border, index }) => (
     {/* Learn More link */}
     <Link
       to="/services"
+      aria-label={`Learn more about ${title}`}
       className={`inline-flex items-center gap-1.5 text-sm font-semibold ${color} mt-1`}
     >
       Learn More

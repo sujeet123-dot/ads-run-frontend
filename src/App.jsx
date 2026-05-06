@@ -1,22 +1,19 @@
-// src/App.jsx
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-// Import Layout Components
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
-
-// Import Page Components
-import HomePage from './pages/HomePage';
-import ServicesPage from './pages/ServicesPage';
-import CaseStudiesPage from './pages/CaseStudiesPage';
-import ContactPage from './pages/ContactPage';
-import AboutPage from './pages/AboutPage';
 import ScrollToTop from './components/sections/ScrollToTop';
-import PrivacyPolicy from './pages/PrivacyPolicy';
-import TermsAndConditions from './pages/TermsAndCondition';
-import PublisherPage from './pages/PublisherPage';
-import ServiceDetailPage from './pages/ServiceDetailPage';
+
+const HomePage = lazy(() => import('./pages/HomePage'));
+const ServicesPage = lazy(() => import('./pages/ServicesPage'));
+const CaseStudiesPage = lazy(() => import('./pages/CaseStudiesPage'));
+const ContactPage = lazy(() => import('./pages/ContactPage'));
+const AboutPage = lazy(() => import('./pages/AboutPage'));
+const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
+const TermsAndConditions = lazy(() => import('./pages/TermsAndCondition'));
+const PublisherPage = lazy(() => import('./pages/PublisherPage'));
+const ServiceDetailPage = lazy(() => import('./pages/ServiceDetailPage'));
 
 function App() {
   return (
@@ -25,18 +22,19 @@ function App() {
         <Header />
         <main className="flex-grow">
           <ScrollToTop />
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/services" element={<ServicesPage />} />
-            <Route path="/services/:slug" element={<ServiceDetailPage />} />
-            <Route path="/case-studies" element={<CaseStudiesPage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/contact" element={<ContactPage />} />
-
-            <Route path="/publisher" element={<PublisherPage />} />
-            <Route path="/privacy" element={<PrivacyPolicy />} />
-            <Route path="/terms" element={<TermsAndConditions />} />
-          </Routes>
+          <Suspense fallback={<div className="min-h-screen" />}>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/services" element={<ServicesPage />} />
+              <Route path="/services/:slug" element={<ServiceDetailPage />} />
+              <Route path="/case-studies" element={<CaseStudiesPage />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/contact" element={<ContactPage />} />
+              <Route path="/publisher" element={<PublisherPage />} />
+              <Route path="/privacy" element={<PrivacyPolicy />} />
+              <Route path="/terms" element={<TermsAndConditions />} />
+            </Routes>
+          </Suspense>
         </main>
         <Footer />
       </div>

@@ -186,6 +186,7 @@ const ServiceCard = ({ icon: Icon, slug, title, desc, features, color, bg, borde
 
     <Link
       to={slug ? `/services/${slug}` : '/contact'}
+      aria-label={slug ? `Learn more about ${title}` : `Get started with ${title}`}
       className={`relative inline-flex items-center gap-1.5 text-sm font-semibold ${color} mt-1`}
     >
       {slug ? 'Learn More' : 'Get Started'}
